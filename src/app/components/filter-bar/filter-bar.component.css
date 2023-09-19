@@ -1,0 +1,23 @@
+.filterbar {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s;
+}
+
+.filterbar.open {
+    width: 16rem;
+}
+
+button {
+    /* margin-left: 20vh; */
+    height: 5rem;
+    width: 2rem;
+    background-color: #225777;
+    color: #fff;
+    border: none;
+    border-radius: 0 50% 50% 0;
+    /* padding: 10px 20px; */
+    cursor: pointer;
+    font-size: 14px;
+}
+

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  background-color: #f6f1eb;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+.container-principal {
+  padding-bottom: 6rem;
+}
+/* html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    margin-top: 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+} */
