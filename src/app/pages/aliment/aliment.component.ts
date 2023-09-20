@@ -62,7 +62,7 @@ export class AlimentComponent {
           }
         });
       });
-      console.log('tableau des saisons'+this.tabSaisons);
+      console.log('tableau des saisons' + this.tabSaisons);
 
       this.alimentsToDisplay.forEach((aliment) => {
         aliment.restrictions.forEach((restriction) => {
@@ -76,7 +76,7 @@ export class AlimentComponent {
           }
         });
       });
-      console.log('tableau des restrictions'+this.tabRestrictions);
+      console.log('tableau des restrictions' + this.tabRestrictions);
     });
   }
 }

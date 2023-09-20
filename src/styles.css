@@ -4,9 +4,13 @@
 *::before {
   margin: 0;
   padding: 0;
-  background-color: #f6f1eb;
+
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f1eb;
 }
 
 .container-principal {

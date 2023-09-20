@@ -1,3 +1,12 @@
-.color {
-  background-color: #fff;
+body {
+}
+
+.card {
+  border-radius: 20px;
+  width: 460px;
+  height: 190px;
+}
+
+img {
+  padding: 10px;
 }

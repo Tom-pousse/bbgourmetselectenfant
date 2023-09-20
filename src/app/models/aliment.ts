@@ -1,6 +1,6 @@
-import { Categorie } from "./categorie";
-import { Restriction } from "./restriction";
-import { Saison } from "./saison";
+import { Categorie } from './categorie';
+import { Restriction } from './restriction';
+import { Saison } from './saison';
 
 export interface Aliment {
   id: number;
