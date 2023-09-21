@@ -75,4 +75,17 @@ export class UtilisateurService {
       }
     );
   }
+  enfantByUser(idEnfant: Enfant): Observable<Utilisateur> {
+    const headers = this.setHeaders();
+    return this.http
+      .get<Utilisateur>(`${this.baseApiUrl}/utilisateurs`, { headers })
+      .pipe(
+        tap((utilisateur: Utilisateur) => {
+          localStorage.setItem(
+            'profilUtilisateur',
+            utilisateur.admin.toString()
+          );
+        })
+      );
+  }
 }

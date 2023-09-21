@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Enfant } from 'src/app/models/enfant';
 import { Restriction } from 'src/app/models/restriction';
 import { UpdateEnfant } from 'src/app/models/updateEnfant';
 import { Utilisateur } from 'src/app/models/utilisateur';
+import { EnfantService } from 'src/app/services/enfant.service';
 import { RestrictionService } from 'src/app/services/restriction.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
@@ -15,7 +16,7 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 export class ModifEnfantComponent {
   @Input() utilisateur!: Utilisateur;
   restriction: Restriction[] = [];
-  monEnfant!: Enfant[];
+
   enfant!: Enfant;
 
   enfantRestriction: UpdateEnfant = {
@@ -31,21 +32,22 @@ export class ModifEnfantComponent {
   checkedRestrictions: Restriction[] = [];
 
   constructor(
-    private enfantService: UtilisateurService,
+    private route: ActivatedRoute,
+    private enfantService: EnfantService,
     private restrictionService: RestrictionService // private enfantService: EnfantService
   ) {}
 
   ngOnInit(): void {
-    this.enfantService.getProfilUtilisateur().subscribe((a) => {
-      this.monEnfant = a.enfants!;
-      console.log(this.monEnfant);
-    });
-
     this.restrictionService.getRestriction().subscribe((data) => {
       this.restriction = data;
     });
+    const routeParam = this.route.snapshot.paramMap;
+    const enfantIdFromRoute = Number(routeParam.get('id'));
 
-    // console.log(this.utilisateur.enfants);
+    this.enfantService.enfantById(enfantIdFromRoute).subscribe((enfant) => {
+      this.enfant = enfant;
+      console.log(this.enfant);
+    });
   }
 
   onChangeRestric(e: Event) {
@@ -54,7 +56,7 @@ export class ModifEnfantComponent {
     const infoChecked = JSON.parse(target.value);
     // console.log('value en json', infoChecked);
     if (target.checked) {
-      // console.log('if dans 1 er', infoChecked);
+      console.log('ce que je selectionne', infoChecked);
 
       if (this.checkedRestrictions.length === this.restriction.length) {
         this.checkedRestrictions = [];
@@ -83,11 +85,27 @@ export class ModifEnfantComponent {
     }
     // if (this.checkedRestrictions.length === 0) {
     //   this.checkedRestrictions = [...this.restriction];
-    //   console.log('last chose', infoChecked);
+    // console.log('last chose', infoChecked);
     // }
+
+    // Ajouter la restriction au tableau si on coche la checkbox
+    // Enlever la restriction du tableau si on décoche la checkbox
+    // Affiche le table de restriction cochées
   }
 
-  // Ajouter la restriction au tableau si on coche la checkbox
-  // Enlever la restriction du tableau si on décoche la checkbox
-  // Affiche le table de restriction cochées
+  ajoutEnfant() {
+    // this.onChangeRestric;
+    this.enfant.restrictions = this.checkedRestrictions;
+    console.log('je recoie1', this.enfant);
+    this.enfantService.updateEnfant(this.enfant).subscribe({
+      next: (response) => {
+        console.log('Inscription réussie:', response);
+      },
+      error: (error) => {
+        console.log("Echec de l'ajout", error);
+        console.log('je recoie3', this.enfant);
+      },
+    });
+    console.log('je recoie4', this.enfant);
+  }
 }

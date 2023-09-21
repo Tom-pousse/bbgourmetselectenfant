@@ -1,8 +1,10 @@
 <app-navbar></app-navbar>
-<div class="mainContainer container-principal">
-  <div>{{ monEnfant }}</div>
+<div *ngIf="enfant" class="mainContainer container-principal">
+  <h2>{{ enfant.prenom }}</h2>
 
-  <form>
+  <h3>{{ enfant.date_naissance }}</h3>
+
+  <form (ngSubmit)="ajoutEnfant()">
     <div *ngFor="let restrict of restriction">
       <input
         type="checkbox"
