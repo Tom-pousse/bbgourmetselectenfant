@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Utilisateur } from '../models/utilisateur';
 import { LoginUtilisateur } from '../models/loginUtilisteur';
 import { ReponseConnexion } from '../models/reponseConnexion';
 import { Enfant } from '../models/enfant';
+import { UpdateEnfant } from '../models/updateEnfant';
 
 @Injectable({
   providedIn: 'root',
@@ -38,8 +39,40 @@ export class UtilisateurService {
 
   getProfilUtilisateur(): Observable<Utilisateur> {
     const headers = this.setHeaders();
-    return this.http.get<Utilisateur>(`${this.baseApiUrl}/utilisateurs`, {
-      headers,
-    });
+    return this.http
+      .get<Utilisateur>(`${this.baseApiUrl}/utilisateurs`, { headers })
+      .pipe(
+        tap((utilisateur: Utilisateur) => {
+          localStorage.setItem(
+            'profilUtilisateur',
+            utilisateur.admin.toString()
+          );
+        })
+      );
+  }
+
+  addEnfant(enfant: Enfant): Observable<Utilisateur> {
+    console.log(enfant);
+    const headers = this.setHeaders();
+    console.log(enfant);
+
+    return this.http.post<Utilisateur>(
+      `http://localhost:3000/api/enfants`,
+      enfant,
+      {
+        headers,
+      }
+    );
+  }
+
+  updateEnfant(enfant: UpdateEnfant): Observable<Utilisateur> {
+    const headers = this.setHeaders();
+    return this.http.put<Utilisateur>(
+      `http://localhost:3000/api/enfants`,
+      enfant,
+      {
+        headers,
+      }
+    );
   }
 }

@@ -18,12 +18,13 @@ const routes: Routes = [
   { path: '', component: CommencerComponent },
   { path: 'home', component: AccueilComponent },
   { path: 'aliment', component: AlimentComponent },
-  { path: 'aliment/add', component: AjoutAlimentComponent },
-  { path: 'aliment/update', component: ModifAlimentComponent },
-  { path: 'aliment/delete', component: SupprAlimentComponent },
+  { path: 'aliment/ajouter', component: AjoutAlimentComponent },
+  { path: 'aliment/modifier', component: ModifAlimentComponent },
+  { path: 'aliment/supprimer', component: SupprAlimentComponent },
   { path: 'profil-utilisateur', component: UtilisateurComponent },
-  { path: 'auth/register', component: InscriptionComponent },
-  { path: 'auth/login', component: ConnexionComponent },
+  { path: 'profil-utilisateur/ok', component: UtilisateurComponent },
+  { path: 'profil-utilisateur/inscription', component: InscriptionComponent },
+  { path: 'profil-utilisateur/connexion', component: ConnexionComponent },
   { path: 'profil-utilisateur/child', component: ProfilEnfantComponent },
   { path: 'profil-utilisateur/child/add', component: AjoutEnfantComponent },
   {
@@ -35,6 +36,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

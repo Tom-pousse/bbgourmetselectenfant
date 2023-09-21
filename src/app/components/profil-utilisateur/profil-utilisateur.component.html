@@ -1,1 +1,18 @@
+<div class="profil-banner mb-4 shadow">
+    <div class="zoneProfil">
+        <h1>Mon Profil</h1>
+        <span class="admin-indicator" *ngIf="profil.admin">#Admin</span>
+        <button class="btnDeconnect" (click)="deconnexion()">Déconnexion</button>
+    </div>
 
+    <div class="zoneInitalHello">
+        <div class="initials-circle">
+            <span id="userInitials">{{ getInitials() }}</span>
+        </div>
+        <p id="userHello">Bonjour, {{ profil.prenom }} !</p>
+    </div>
+    <div class="zoneEmail">
+        <span id="userEmail">{{ profil. email }}</span>
+    </div>
+
+</div>

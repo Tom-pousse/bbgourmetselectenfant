@@ -1,15 +1,18 @@
-<div>
-  <div class="d-flex justify-content-start">
-    <div class="column">
-      <div class="card p-2 ms-5 mb-5 row">
-        <img
-          style="width: 10rem"
-          src="../../../assets/Babys Room.png"
-          alt="Image bébé"
-        />
-
-        <h3 class="pt-5 ps-5">{{ enfants.prenom }}</h3>
-      </div>
+<div class="card-enfant d-flex justify-content-start">
+  <div class="card d-flex flex-wrap justify-content-center">
+    <div class="d-flex justify-content-center">
+      <img
+        class="color image"
+        style="width: 10rem"
+        src="../../../assets/Baby.png"
+        alt="Image bébé"
+      />
+    </div>
+    <div>
+      <p>{{ enfant.prenom }}</p>
+      <button
+        [routerLink]="['/profil-utilisateur/child/update/', enfant.id]"
+      ></button>
     </div>
   </div>
 </div>

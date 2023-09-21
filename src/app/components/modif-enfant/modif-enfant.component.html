@@ -1,3 +1,18 @@
 <app-navbar></app-navbar>
-<p>modif-enfant works!</p>
-<app-footer></app-footer>
+<div class="mainContainer container-principal">
+  <div>{{ monEnfant }}</div>
+
+  <form>
+    <div *ngFor="let restrict of restriction">
+      <input
+        type="checkbox"
+        value="{{ restrict | json }}"
+        [id]="restrict.libelle"
+        (change)="onChangeRestric($event)"
+      />
+      <label [for]="restrict.libelle">{{ restrict.libelle }}</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Et pouf un enfant !</button>
+  </form>
+  <app-footer></app-footer>
+</div>

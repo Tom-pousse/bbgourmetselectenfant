@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Aliment } from '../models/aliment';
 import { Observable } from 'rxjs';
-import { NewAliment } from '../models/newAliment';
-import { DataOneAliment } from '../models/dataOneAliment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +21,11 @@ export class AlimentService {
     return this.http.get<Aliment[]>('http://localhost:3000/api/aliments');
   }
 
-  createAliment(aliment: NewAliment): Observable<DataOneAliment> {
+  createAliment(aliment: Aliment): Observable<Aliment> {
     // recup le token dans le localstorage
+    // const headers = this.setHeaders();
     const headers = this.setHeaders();
-
-    return this.http.post<DataOneAliment>(
+    return this.http.post<Aliment>(
       `http://localhost:3000/api/aliments`,
       aliment,
       { headers }
