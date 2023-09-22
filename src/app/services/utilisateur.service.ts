@@ -5,7 +5,6 @@ import { Utilisateur } from '../models/utilisateur';
 import { LoginUtilisateur } from '../models/loginUtilisteur';
 import { ReponseConnexion } from '../models/reponseConnexion';
 import { Enfant } from '../models/enfant';
-import { UpdateEnfant } from '../models/updateEnfant';
 
 @Injectable({
   providedIn: 'root',
@@ -51,7 +50,7 @@ export class UtilisateurService {
       );
   }
 
-  addEnfant(enfant: Enfant): Observable<Utilisateur> {
+  addEnfantByUser(enfant: Enfant): Observable<Utilisateur> {
     console.log(enfant);
     const headers = this.setHeaders();
     console.log(enfant);
@@ -63,29 +62,5 @@ export class UtilisateurService {
         headers,
       }
     );
-  }
-
-  updateEnfant(enfant: UpdateEnfant): Observable<Utilisateur> {
-    const headers = this.setHeaders();
-    return this.http.put<Utilisateur>(
-      `http://localhost:3000/api/enfants`,
-      enfant,
-      {
-        headers,
-      }
-    );
-  }
-  enfantByUser(idEnfant: Enfant): Observable<Utilisateur> {
-    const headers = this.setHeaders();
-    return this.http
-      .get<Utilisateur>(`${this.baseApiUrl}/utilisateurs`, { headers })
-      .pipe(
-        tap((utilisateur: Utilisateur) => {
-          localStorage.setItem(
-            'profilUtilisateur',
-            utilisateur.admin.toString()
-          );
-        })
-      );
   }
 }

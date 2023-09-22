@@ -1,15 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Enfant } from '../models/enfant';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UpdateEnfant } from '../models/updateEnfant';
-import { Restriction } from '../models/restriction';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnfantService {
+  private baseApiUrl = 'http://localhost:3000/api';
+
   constructor(private http: HttpClient) {}
+
+
   setHeaders() {
     const jwtToken = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -17,27 +19,11 @@ export class EnfantService {
     });
     return headers;
   }
-
-  enfantById(enfantId: number): Observable<Enfant> {
+  
+  getProfilEnfant(idEnfant:number): Observable<Enfant> {
     const headers = this.setHeaders();
-
-    return this.http.get<Enfant>(
-      `http://localhost:3000/api/enfants/${enfantId}`,
-
-      {
-        headers,
-      }
-    );
-  }
-
-  updateEnfant(enfant: Enfant): Observable<Enfant> {
-    const headers = this.setHeaders();
-    return this.http.patch<Enfant>(
-      `http://localhost:3000/api/enfants/${enfant.id}`,
-      enfant,
-      {
-        headers,
-      }
-    );
+    return this.http.get<Enfant>(`${this.baseApiUrl}/enfants/${idEnfant}`, {
+      headers,
+    });
   }
 }

@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
-
 <div class="mainContainer container-principal">
+
+    <div class="textBienvenue">
+        <h1>Ajouter un enfant</h1>
+        <h2>Merci d’enregistrer les informations suivantes :</h2>
+    </div>
+
   <form (ngSubmit)="ajoutEnfant()">
     <div class="form-group">
       <input
@@ -8,7 +13,8 @@
         type="text"
         class="form-control shadow-sm"
         name="prenom"
-        placeholder="prenom"
+        placeholder="Prénom *"
+        required
       />
     </div>
     <div class="form-group">
@@ -17,11 +23,12 @@
         type="date"
         class="form-control shadow-sm"
         name="date_naissance"
-        placeholder="date_naissance"
+        required
       />
     </div>
 
-    <div *ngFor="let restrict of restriction">
+    <div>
+        <div *ngFor="let restrict of restrictionsTab">
       <input
         type="checkbox"
         value="{{ restrict | json }}"
@@ -30,10 +37,11 @@
       />
       <label [for]="restrict.libelle">{{ restrict.libelle }}</label>
     </div>
-    <button type="submit" class="btn btn-primary">Et pouf un enfant !</button>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Ajouter</button>
   </form>
-
-  <!-- enfant naissance : {{ enfant.date_naissance }} -->
-
-  <app-footer></app-footer>
+    
 </div>
+
+<app-footer></app-footer>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Enfant } from 'src/app/models/enfant';
 import { Restriction } from 'src/app/models/restriction';
-
 import { RestrictionService } from 'src/app/services/restriction.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
@@ -11,7 +11,8 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./ajout-enfant.component.css'],
 })
 export class AjoutEnfantComponent {
-  restriction: Restriction[] = [];
+  restrictionsTab!: Restriction[];
+  // enfant!: Enfant;
   enfant: Enfant = {
     prenom: '',
     date_naissance: new Date(),
@@ -28,15 +29,16 @@ export class AjoutEnfantComponent {
   checkedRestrictions: Restriction[] = [];
 
   constructor(
-    private enfantService: UtilisateurService,
-    private restrictionService: RestrictionService
-  ) // private enfantService: EnfantService
-  {}
+    private router : Router,
+    private utilisateurService: UtilisateurService,
+    private restrictionService: RestrictionService // private enfantService: EnfantService
+  ) {}
 
   ngOnInit(): void {
-    this.restrictionService.getRestriction().subscribe((data) => {
-      this.restriction = data;
+    this.restrictionService.getRestrictions().subscribe((data) => {
+      this.restrictionsTab = data;
     });
+    
   }
 
   onChangeRestric(e: Event) {
@@ -47,7 +49,7 @@ export class AjoutEnfantComponent {
     if (target.checked) {
       // console.log('if dans 1 er', infoChecked);
 
-      if (this.checkedRestrictions.length === this.restriction.length) {
+      if (this.checkedRestrictions.length === this.restrictionsTab.length) {
         this.checkedRestrictions = [];
         this.checkedRestrictions.push(infoChecked);
         // console.log(
@@ -85,9 +87,9 @@ export class AjoutEnfantComponent {
     // this.onChangeRestric;
     this.enfant.restrictions = this.checkedRestrictions;
     console.log('je recoie1', this.enfant);
-    this.enfantService.addEnfant(this.enfant).subscribe({
+    this.utilisateurService.addEnfantByUser(this.enfant).subscribe({
       next: (response) => {
-        // console.log('Inscription réussie:', response);
+       this.router.navigate([`/profil-utilisateur`])
       },
       error: (error) => {
         // console.log("Echec de l'ajout", error);

@@ -2,22 +2,22 @@
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #F6F1EB;
+  background-color: #f6f1eb;
 }
 
 .container-principal {
-    padding-bottom: 6rem;
+  padding-bottom: 6rem;
 }
 
 .svg {
-    height: 10em;
-    display: flex;
-    justify-content: left;
+  height: 10em;
+  display: flex;
+  justify-content: left;
 }

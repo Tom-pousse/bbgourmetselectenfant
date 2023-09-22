@@ -1,48 +1,153 @@
 <app-navbar></app-navbar>
+<!-- ajout des rajout de    [disabled]="blockSelect" pour lock les input
+ajout des ngif pour le switch
+ajout des methode au click
+ajout d'un h1 et p pour le switch
+ajout des btn + route
 
-<div class="d-flex flex-column align-items-center justify-content-center text-center align-bottom container-principal"
-    style="height: 600px">
-    <form>
-        <h1>Ajouter un aliment</h1>
-        <p>Merci de renseigner les informations suivantes</p>
+ -->
+<div class="container">
+  <div class="">
+    <div class="">
+      <form>
+        <h1 *ngIf="hidden" class="">Ajouter un aliment</h1>
+        <h1 *ngIf="hidden1" class="letterSpacing">
+          Voulez vous vraiment ajouter cet aliment ?
+        </h1>
+        <p *ngIf="hidden" class="letterSpacing">
+          Merci d’enregistrer les informations suivantes :
+        </p>
 
-        <div class="form-group p-2">
-            <input #libelle type="text" class="form-control" id="Libelle" placeholder="Nom*" required
-            style="width: 440px" />
-        </div>  
-
-        <div class="form-group p-2">
-            <input #age_introduction type="number" class="form-control" id="Age_introduction"
-                placeholder="Age d'introduction*" required style="width: 440px" />
+        <!-- Champs "Nom" -->
+        <div class="form-group testfont">
+          <input
+            [disabled]="blockSelect"
+            #libelle
+            type="text"
+            class="form-control inputStyle"
+            id="Libelle"
+            placeholder="Nom*"
+            required
+          />
         </div>
 
-        <div class="form-group p-2">
-            <input #categorie type="number" class="form-control" id="Categorie" placeholder="Catégorie*" required
-                style="width: 440px" />
-        </div>
-      
-        <div class="form-group p-2">
-            <input #saison type="number" class="form-control" id="Saison" placeholder="Saison(s)*" required
-                style="width: 440px" />
-        </div>
-
-        <div class="form-group p-2">
-            <input #restriction type="number" class="form-control" id="Restriction" placeholder="Restriction(s)"
-                style="width: 440px" />
-        </div>
-
-        <div class="text-center">
-            <p class="zone-signup pb-6">
-                * : Champs Obligatoires, sauf salsifis
-            </p>
+        <!-- Champs "Catégorie" -->
+        <div class="form-group testfont">
+          <ng-select
+            [disabled]="blockSelect"
+            [items]="categorie"
+            placeholder="Catégorie(s)"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedCategorie"
+            [ngModelOptions]="{ standalone: true }"
+            [maxSelectedItems]="1"
+            bindValue="id"
+            class="custom"
+          >
+          </ng-select>
         </div>
 
-        <div class="zone-btn p-2">
-            <button type="button" class="btn btn-color" style="width: 440px" >
-                Ajouter
-            </button>
+        <!-- Champs "Age d'introduction" -->
+        <div class="form-group testfont">
+          <input
+            [disabled]="blockSelect"
+            #age_introduction
+            type="text"
+            class="form-control inputStyle"
+            id="Age_introduction"
+            placeholder="Age d'introduction*"
+            required
+          />
         </div>
-    </form>
 
+        <!-- Champs "Saison(s)" -->
+        <div class="form-group testfont">
+          <ng-select
+            [disabled]="blockSelect"
+            [items]="saisons"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedSaisons"
+            [ngModelOptions]="{ standalone: true }"
+            [maxSelectedItems]="3"
+            placeholder="saison(s)"
+            class="custom"
+          >
+          </ng-select>
+        </div>
 
-</div><app-footer></app-footer>
+        <!-- Champs "Restriction(s)"  -->
+        <div class="form-group testfont tst">
+          <ng-select
+            [disabled]="blockSelect"
+            [items]="restrictions"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedRestrictions"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Restriction(s)"
+            class="custom"
+          >
+          </ng-select>
+        </div>
+
+        <div class="">
+          <p *ngIf="hidden" class="zone-signup lowSize">
+            * : Champs Obligatoires, sauf salsifis
+          </p>
+        </div>
+        <!-- Bouton "Ajouter" -->
+        <div>
+          <button
+            (click)="changediv()"
+            *ngIf="hidden"
+            type="button"
+            class="btn btn-color btn-block btnModele"
+          >
+            Ajouter
+          </button>
+          <button
+            *ngIf="hidden"
+            type="button"
+            class="btn btn-color btn-block btnModeleRed"
+            routerLink="/aliment"
+          >
+            Retour
+          </button>
+        </div>
+
+        <!-- Bouton "Ajouter" -->
+        <div class="form-group testfont" *ngIf="hidden1">
+          <button
+            type="button"
+            class="btn btnModele"
+            (click)="
+              createAliment(
+                libelle.value,
+                selectedCategorie,
+                +age_introduction.value,
+                selectedSaisons,
+                selectedRestrictions
+              )
+            "
+            [routerLink]="'/aliment'"
+          >
+            Ajouter
+          </button>
+
+          <button
+            (click)="changediv()"
+            type="button"
+            class="btn btn-color btn-block btnModeleRed"
+            *ngIf="hidden1"
+          >
+            Retour
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
