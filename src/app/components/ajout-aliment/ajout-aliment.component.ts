@@ -73,8 +73,12 @@ export class AjoutAlimentComponent implements OnInit {
       alert(`Merci de renseigner les champs vides`);
     } else {
       this.alimentService.createAliment(newAliment).subscribe(() => {});
+      setTimeout(() => {
+        location.reload();
+      }, 100);
     }
   }
+  // ajout du settimeout pour refresh la page (au dessus)
 
   // methode pour les switch de div et le verouillage
   changediv() {

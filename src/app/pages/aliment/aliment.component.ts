@@ -32,6 +32,8 @@ export class AlimentComponent {
     valeur: '',
   };
 
+  refresh: boolean = true;
+
   constructor(private alimentService: AlimentService) {}
 
   ngOnInit(): void {
