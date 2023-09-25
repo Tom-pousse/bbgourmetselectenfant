@@ -3,18 +3,18 @@
 >
   <div class="tst">
     <div class="taille"></div>
-    <div class="centrage">
-      <div class="container-title">
-        <h2>Liste des aliments</h2>
-      </div>
+
+    <div class="container-title">
+      <h2>Liste des aliments</h2>
     </div>
-    <div class="btn-top">
+
+    <div class="btn-top taille">
       <button
         *ngIf="profilUtilisateur"
         id="btnAjouter"
         [routerLink]="['/aliment/ajouter']"
         routerLinkActive="router-link-active"
-        class="d-flex justify-content-end"
+        class=""
       >
         Ajouter un aliment
       </button>
@@ -44,7 +44,7 @@
                 </li>
               </ul>
             </td>
-            <td *ngIf="profilUtilisateur">
+            <td *ngIf="profilUtilisateur" class="">
               <button
                 class="btn modifier"
                 [routerLink]="['/aliment/modifier/', aliment.id]"
