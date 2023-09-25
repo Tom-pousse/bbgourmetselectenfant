@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 
 <div class="d-flex">
-
   <app-filter-bar
     class="pt-2"
     [tabCategories]="tabCategories"
@@ -16,15 +15,13 @@
 
   <div>
     <div class="m-1">
-    <app-search-bar (searchFilter)="onSearchValue($event)"></app-search-bar>
+      <app-search-bar (searchFilter)="onSearchValue($event)"></app-search-bar>
 
-     <app-liste-aliment
-    [aliments]="alimentsToDisplayFilter"
-    [profilUtilisateur]="profilUtilisateur"
-  ></app-liste-aliment>
+      <app-liste-aliment
+        [aliments]="alimentsToDisplayFilter"
+        [profilUtilisateur]="profilUtilisateur"
+      ></app-liste-aliment>
+    </div>
   </div>
- 
-
 </div>
-
 <app-footer></app-footer>

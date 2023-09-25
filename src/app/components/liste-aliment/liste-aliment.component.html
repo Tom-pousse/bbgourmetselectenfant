@@ -1,19 +1,25 @@
 <div
   class="container-fluid d-flex row justify-content-center container-principal"
 >
-  <div class="container-title">
-    <h1>Liste des aliments</h1>
-
-    <button
-      *ngIf="profilUtilisateur"
-      id="btnAjouter"
-      [routerLink]="['/aliment/ajouter']"
-      routerLinkActive="router-link-active"
-    >
-      Ajouter un aliment
-    </button>
+  <div class="tst">
+    <div class="taille"></div>
+    <div class="centrage">
+      <div class="container-title">
+        <h2>Liste des aliments</h2>
+      </div>
+    </div>
+    <div class="btn-top">
+      <button
+        *ngIf="profilUtilisateur"
+        id="btnAjouter"
+        [routerLink]="['/aliment/ajouter']"
+        routerLinkActive="router-link-active"
+        class="d-flex justify-content-end"
+      >
+        Ajouter un aliment
+      </button>
+    </div>
   </div>
-
   <div class="container-aliments card">
     <div class="scroller">
       <table class="table table-striped">
@@ -38,7 +44,7 @@
                 </li>
               </ul>
             </td>
-            <td *ngIf="profilUtilisateur" class="d-flex justify-content-center">
+            <td *ngIf="profilUtilisateur">
               <button
                 class="btn modifier"
                 [routerLink]="['/aliment/modifier/', aliment.id]"

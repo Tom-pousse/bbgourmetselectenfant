@@ -1,8 +1,27 @@
 .container-title {
+  width: 100%;
+}
+.taille {
+  padding: 0;
+  width: 20%;
+}
+.btn-top {
+  padding: 0;
   display: flex;
   justify-content: center;
-  align-items: baseline;
-  width: 70rem;
+  align-items: center;
+}
+
+h2 {
+  width: 100%;
+}
+
+.tst {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width: 70%;
 }
 
 li {
@@ -22,7 +41,6 @@ li {
 }
 
 .btn {
-  margin: 0;
   border-radius: 2rem;
   width: 54px;
   height: 28px;
@@ -33,10 +51,11 @@ li {
 
 .modifier {
   background-color: #225777;
-  margin-right: 0.2rem;
+  margin: 0.2rem;
 }
 
 .supprimer {
+  margin: 0.2rem;
   background-color: #982312;
 }
 
@@ -48,9 +67,7 @@ li {
   cursor: pointer;
   border-radius: 2rem;
   height: 28px;
-  margin: 0;
-  margin-bottom: 0.5rem;
-  text-align: center;
+
   padding-left: 20px;
   padding-right: 20px;
 }
