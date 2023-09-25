@@ -1,23 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #f6f1eb;
+    background-color: #F6F1EB;
 }
 
 .container-principal {
-  padding-bottom: 6rem;
+    padding-bottom: 6rem;
 }
 
 .svg {
-  height: 10em;
-  display: flex;
-  justify-content: left;
+    height: 12em;
+    position: absolute;
 }

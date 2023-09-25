@@ -73,9 +73,9 @@ export class AjoutAlimentComponent implements OnInit {
       alert(`Merci de renseigner les champs vides`);
     } else {
       this.alimentService.createAliment(newAliment).subscribe(() => {});
-      // supp de l'alerte
     }
   }
+
   // methode pour les switch de div et le verouillage
   changediv() {
     if (

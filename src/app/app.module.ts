@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { ProfilEnfantComponent } from './components/profil-enfant/profil-enfant.
 import { ProfilUtilisateurComponent } from './components/profil-utilisateur/profil-utilisateur.component';
 import { SupprAlimentComponent } from './components/suppr-aliment/suppr-aliment.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     ProfilUtilisateurComponent,
     SupprAlimentComponent,
     FilterBarComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,6 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     NgSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
