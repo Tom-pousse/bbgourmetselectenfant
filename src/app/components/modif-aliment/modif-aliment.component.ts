@@ -24,11 +24,6 @@ export class ModifAlimentComponent implements OnInit {
   selectedCategorie: number[] = [];
   ages: Aliment[] = [];
   selectedAge: Aliment[] = [];
-  // hidden et hidden 1 pour switch entre les div
-  hidden: boolean = true;
-  hidden1: boolean = false;
-  // blockSelect pour verrouiller les inputs
-  blockSelect: boolean = false;
 
   constructor(
     private alimentService: AlimentService,
@@ -44,7 +39,7 @@ export class ModifAlimentComponent implements OnInit {
     if (localStorage.getItem('profilUtilisateur') != 'true') {
       this.router.navigate(['/**']);
     }
-
+    
     // Obtenez le paramètre 'id' depuis la route
     const alimentIdFromRoute = Number(this.route.snapshot.paramMap.get('id'));
     console.log('is this the good idea ? ', alimentIdFromRoute);
@@ -96,22 +91,10 @@ export class ModifAlimentComponent implements OnInit {
     console.log(updateAliment);
     this.alimentService
       .updateAliment(this.aliment.id, updateAliment)
-      .subscribe((data) => {});
-    setTimeout(() => {
-      this.router.navigate([`/aliment`]);
-    }, 200); // ajout du settimeout pour refresh la page modif par un navigate pour laisser le temps a l'object detre creer***
-  }
-
-  // methode pour les switch de div et le verouillage
-  changediv() {
-    if (
-      this.hidden === this.hidden &&
-      this.hidden1 === this.hidden1 &&
-      this.blockSelect === this.blockSelect
-    ) {
-      this.hidden = !this.hidden;
-      this.hidden1 = !this.hidden1;
-      this.blockSelect = !this.blockSelect;
-    }
+      .subscribe((data) => {
+        if (data) {
+          alert(`L'aliment a été mis à jour.`);
+        }
+      });
   }
 }

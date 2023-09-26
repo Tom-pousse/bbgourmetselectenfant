@@ -1,0 +1,58 @@
+/* <!-- copie et colle simplement --> */
+.mainContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3.5rem;
+}
+
+.card {
+  align-items: center;
+  text-align: center;
+  border-radius: 1.2rem;
+  height: 12rem;
+  width: 20rem;
+  box-shadow: 0px 0px 15px -4px #225777;
+  background-size: cover;
+
+  background-image: url(../../../assets/depart1.jpg);
+}
+h2 {
+  color: #982312;
+  margin-top: 1.5rem;
+}
+
+#btnSupprimer {
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #225777;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  width: 12rem;
+  height: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.btnAnnuler {
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #982312;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  width: 12rem;
+  height: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+button {
+  margin: 0 70px;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 1rem;
+}

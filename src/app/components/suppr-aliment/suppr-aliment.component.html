@@ -7,10 +7,15 @@
   <div><p>Etes-vous sûr de vouloir supprimer cet aliment ?</p></div>
 
   <div>
-    <button type="submit" id="btnSupprimer" (click)="deleteAliment(aliment)">
-      oui, supprimer
+    <button
+      type="submit"
+      id="btnSupprimer"
+      [routerLink]="['/aliment']"
+      (click)="deleteAliment(aliment)"
+    >
+      Oui, supprimer
     </button>
-    <button class="btnAnnuler" [routerLink]="['/aliment']">non, annuler</button>
+    <button class="btnAnnuler" [routerLink]="['/aliment']">Non, annuler</button>
   </div>
 </div>
 <app-footer></app-footer>
