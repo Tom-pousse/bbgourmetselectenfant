@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Enfant } from 'src/app/models/enfant';
 
 @Component({
   selector: 'app-filter-bar',
@@ -6,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./filter-bar.component.css'],
 })
 export class FilterBarComponent {
+  @Input() enfant!: Enfant;
   @Input() tabCategories!: Array<string>;
   @Input() tabAges!: Array<number>;
   @Input() tabRestrictions!: Array<string>;
@@ -27,7 +29,10 @@ export class FilterBarComponent {
   restrictionFiltre: string[] = [];
   saisonFiltre: string[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('enfant ',this.enfant);
+    
+  }
 
   onCheckCategorie(e: Event) {
     //recupérer la valeur de la checkbox et son etat
@@ -100,7 +105,7 @@ export class FilterBarComponent {
   onCheckRestriction(e: Event) {
     //recupérer la valeur de la checkbox et son etat
     const target = e.target as HTMLInputElement;
-    // console.log('avant if ' + target.value + ' tabR '+this.tabRestrictions);
+          // console.log('avant if ' + target.value + ' tabR '+this.tabRestrictions);
     if (target.checked) {
       if (this.restrictionFiltre.length === this.tabRestrictions.length) {
         this.restrictionFiltre = [];

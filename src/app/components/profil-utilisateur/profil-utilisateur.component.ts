@@ -15,15 +15,15 @@ export class ProfilUtilisateurComponent {
   getInitials(): string {
     if (this.profil.nom && this.profil.prenom) {
       return (
-        this.profil.nom.charAt(0).toUpperCase() +
-        this.profil.prenom.charAt(0).toUpperCase()
+        this.profil.prenom.charAt(0).toUpperCase() +
+        this.profil.nom.charAt(0).toUpperCase()
       );
     }
     return '';
   }
 
   majusculeFirst() {
-    const prenom =  this.profil.nom.charAt(0).toUpperCase() + this.profil.nom.slice(1)
+    const prenom =  this.profil.prenom.charAt(0).toUpperCase() + this.profil.prenom.slice(1)
     console.log('prenom '+prenom);
     return prenom
   }

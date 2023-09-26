@@ -1,6 +1,6 @@
 /* modif du margin top */
 .container {
-  margin-top: 2rem;
+  margin-top: 6rem;
   width: 40vw;
 }
 
@@ -26,6 +26,7 @@ h1 {
   display: flex;
   justify-content: left;
 }
+
 /* supp du Xlarge + line-height pour centrer placeholder 
 dans les input du ng select (pas trouver d'autre méthode)
 padding left*/
@@ -40,6 +41,7 @@ padding left*/
   line-height: 38px;
   padding-left: 2.5rem;
 }
+
 /* supp du Xlarge,  padding left*/
 .inputStyle {
   background-color: rgba(34, 87, 119, 0.2);
@@ -65,6 +67,7 @@ padding left*/
   height: 2.5rem;
   margin-bottom: 0.5rem;
 }
+
 /* margin left pour espacement bouton change juste la valeur si tu trouve que l'espace n'est pas assez large */
 .btnModeleRed {
   font-size: 1rem;

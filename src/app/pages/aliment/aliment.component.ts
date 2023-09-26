@@ -32,8 +32,6 @@ export class AlimentComponent {
     valeur: '',
   };
 
-  refresh: boolean = true;
-
   constructor(private alimentService: AlimentService) {}
 
   ngOnInit(): void {
@@ -90,7 +88,7 @@ export class AlimentComponent {
       });
 
       this.tabRestrictions.sort();
-      console.log('tableau des restrictions' + this.tabRestrictions);
+      // console.log('tableau des restrictions' + this.tabRestrictions);
 
       this.tabAges.sort((a, b) => {
         return a - b;
@@ -127,20 +125,20 @@ export class AlimentComponent {
   }
 
   onFiltreSaisons(filtreSaison: string[]) {
-    this.saveFilterTab.saisons = filtreSaison;
+    this.saveFilterTab.saisons = [...filtreSaison];
     this.extraireAlimentsInterdits();
     this.saveFilter(this.saveFilterTab);
   }
 
   onSearchValue(value: string) {
     this.saveFilterTab.valeur = value;
-    this.extraireAlimentsInterdits();
+    this.extraireAlimentsInterdits()
     this.saveFilter(this.saveFilterTab);
   }
-
+  
   onFiltreRestrictions(filtreRestriction: string[]) {
-    this.saveTabRestriction = filtreRestriction;
-    console.log('dans onFiltre' + this.saveTabRestriction);
+    this.saveTabRestriction = [...filtreRestriction];
+    // console.log('dans onFiltre' + this.saveTabRestriction);
     this.extraireAlimentsInterdits();
     this.onFiltreCategorie(this.saveFilterTab.categorie);
     this.onFiltreAge(this.saveFilterTab.age);
