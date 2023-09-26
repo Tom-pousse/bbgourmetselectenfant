@@ -42,6 +42,11 @@ padding left*/
   padding-left: 2.5rem;
 }
 
+/* ajout placeholder opacité sur les input pour avoir la meme partout */
+::placeholder {
+  opacity: 0.6;
+}
+
 /* supp du Xlarge,  padding left*/
 .inputStyle {
   background-color: rgba(34, 87, 119, 0.2);
