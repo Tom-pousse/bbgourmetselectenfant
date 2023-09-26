@@ -34,8 +34,8 @@ export class AjoutAlimentComponent implements OnInit {
     private alimentService: AlimentService,
     private saisonService: SaisonService,
     private restrictionsService: RestrictionService,
-    private categorieService: CategorieService, 
-    private router :Router,
+    private categorieService: CategorieService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -81,8 +81,8 @@ export class AjoutAlimentComponent implements OnInit {
     } else {
       this.alimentService.createAliment(newAliment).subscribe(() => {});
       setTimeout(() => {
-        location.reload();
-      }, 100); // ajout du settimeout pour refresh la page 
+        this.router.navigate([`/aliment`]);
+      }, 200); // ajout du settimeout pour refresh la page modif par un navigate pour laisser le temps a l'object detre creer***
     }
   }
 

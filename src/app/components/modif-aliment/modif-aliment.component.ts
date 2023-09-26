@@ -98,8 +98,8 @@ export class ModifAlimentComponent implements OnInit {
       .updateAliment(this.aliment.id, updateAliment)
       .subscribe((data) => {});
     setTimeout(() => {
-      location.reload();
-    }, 100); // ajout du settimeout pour refresh la page
+      this.router.navigate([`/aliment`]);
+    }, 200); // ajout du settimeout pour refresh la page modif par un navigate pour laisser le temps a l'object detre creer***
   }
 
   // methode pour les switch de div et le verouillage

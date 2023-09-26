@@ -40,7 +40,7 @@ export class SupprAlimentComponent {
     // console.log('id plante à supprimer :', aliment);
     this.alimentService.deleteAliment(aliment).subscribe();
     setTimeout(() => {
-      location.reload();
-    }, 100); // ajout du settimeout pour refresh la page
+      this.router.navigate([`/aliment`]);
+    }, 200); // ajout du settimeout pour refresh la page modif par un navigate pour laisser le temps a l'object detre creer***
   }
 }
